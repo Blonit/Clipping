@@ -12,7 +12,7 @@
     "host_permissions": [
         "<all_urls>"
     ],
-    "permissions": ["clipboardRead", "clipboardWrite", "storage", "activeTab"],
+    "permissions": ["clipboardRead", "clipboardWrite", "storage"],
     "action": {
         "default_popup": "popup.html"
     },
