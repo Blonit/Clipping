@@ -10,7 +10,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         date: new Date().toISOString(),
       };
 
-      // 중복 확인
       const isDuplicate = clipboardHistory.some(
         (item) => item.text === newItem.text && item.url === newItem.url
       );
@@ -27,11 +26,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         sendResponse({ status: "duplicate", message: "Duplicate item ignored!" });
       }
     });
-    return true; // 비동기 응답
+    return true;
   } else if (message.action === "getClipboardHistory") {
     chrome.storage.local.get("clipboardHistory", (result) => {
       sendResponse(result.clipboardHistory || []);
     });
-    return true; // 비동기 응답
+    return true;
   }
 });
