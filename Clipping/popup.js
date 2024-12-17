@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 클립보드 기록 렌더링 함수
   function renderClipboardHistory() {
     chrome.storage.local.get("clipboardHistory", (result) => {
       const history = result.clipboardHistory || [];
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
           li.style.padding = "10px";
           li.style.cursor = "pointer";
 
-          // 텍스트 스팬
           const textSpan = document.createElement("span");
           textSpan.textContent = item.text;
           textSpan.title = item.text;
@@ -35,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
           textSpan.style.textOverflow = "ellipsis";
           textSpan.style.width = "300px";
 
-          // 날짜 표시
           const dateSpan = document.createElement("span");
           const now = new Date(item.date);
           const hours = now.getHours();
@@ -47,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
           dateSpan.style.color = "#888";
           dateSpan.style.marginLeft = "10px";
 
-          // 삭제 버튼
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "✖️";
           deleteButton.style.marginLeft = "10px";
@@ -63,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           deleteButton.addEventListener("click", (event) => {
             event.stopPropagation();
-            deleteItem(item.text); // 고유한 텍스트 값으로 삭제
+            deleteItem(item.text);
           });
 
           const searchButton  = document.createElement("button");
@@ -81,10 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
           searchButton.addEventListener("click", (event) => {
             event.stopPropagation();
-            openSearchTab(item.text); // 새 탭에서 검색
+            openSearchTab(item.text);
           });
 
-          // 복사 클릭 이벤트
           li.addEventListener("click", () => {
             navigator.clipboard
               .writeText(item.text)
@@ -108,11 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.tabs.create({ url: searchUrl });
   }
 
-  // 특정 항목 삭제 함수
   function deleteItem(text) {
     chrome.storage.local.get("clipboardHistory", (result) => {
       const history = result.clipboardHistory || [];
-      const updatedHistory = history.filter((item) => item.text !== text); // 텍스트 기반 삭제
+      const updatedHistory = history.filter((item) => item.text !== text);
       chrome.storage.local.set({ clipboardHistory: updatedHistory }, () => {
         console.log(`Item with text "${text}" deleted.`);
         renderClipboardHistory();
@@ -120,10 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 초기 렌더링
   renderClipboardHistory();
 
-  // Clear 버튼 이벤트
   clearButton.addEventListener("click", () => {
     if (confirm("Are you sure you want to clear all clipboard history?")) {
       chrome.storage.local.set({ clipboardHistory: [] }, () => {
