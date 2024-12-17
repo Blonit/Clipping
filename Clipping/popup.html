@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipping</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            width: 300px;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        li {
+            background: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        li:hover {
+            background: rgb(218, 218, 218);
+        }
+
+        li span {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        button {
+            flex-shrink: 0;
+            background: #ff000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+        }
+
+        button:hover {
+            background: #b3000000;
+        }
+
+        #clear-history {
+            background: #FF0000;
+            padding: 5px;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            font-size: 15px;
+        }
+
+        #clear-history:hover {
+            background: #b30000;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        /* 다크 모드 지원 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            li {
+                background: #2a2a2a;
+            }
+
+            li:hover {
+                background: #3a3a3a;
+            }
+
+            button {
+                background: #ff4d4d00;
+            }
+
+            button:hover {
+                background: #ff1a1a00;
+            }
+
+            hr {
+                border-top: 1px solid #444;
+            }
+        }
+    </style>
+    <script src="popup.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Clipping</h1>
+        <button id="clear-history" title="Clear all items">🗑</button>
+    </header>
+    <hr>
+    <div>
+        <ul id="clipboardList">
+            <!-- 목록이 비어있을 경우 기본 항목 표시 -->
+            <li>No text items yet...</li>
+        </ul>
+    </div>
+</body>
+</html>
