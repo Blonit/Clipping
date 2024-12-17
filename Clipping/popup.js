@@ -27,11 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const textSpan = document.createElement("span");
           textSpan.textContent = item.text;
           textSpan.title = item.text;
-          textSpan.style.display = "block";
           textSpan.style.whiteSpace = "nowrap";
           textSpan.style.overflow = "hidden";
           textSpan.style.textOverflow = "ellipsis";
-          textSpan.style.width = "300px";
 
           const dateSpan = document.createElement("span");
           const now = new Date(item.date);
