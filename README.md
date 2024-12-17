@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Features
+##  Features
 
 - **Automatic Clipboard Saving**: Automatically saves text copied from web pages to your local clipboard history.
 - **Clipboard History Management**:
@@ -18,7 +18,7 @@
 
 ---
 
-## 🛠️ How to Use
+##  How to Use
 
 1. **Copy Text**: Use `Ctrl + C` or right-click > "Copy" as you normally would.
 2. **Open the Extension**: Click the **Clipping** icon in the Chrome toolbar to view your clipboard history.
@@ -30,7 +30,7 @@
 
 ---
 
-## 🔐 Permissions
+##  Permissions
 
 This extension requires the following permissions:
 - **Clipboard Access**: To read and write clipboard data.
@@ -38,14 +38,14 @@ This extension requires the following permissions:
 
 ---
 
-## ⚠️ Known Issues
+##  Known Issues
 
 - Clipboard history is stored locally. Clearing browser data will also remove saved clipboard history.
 - Due to security restrictions, clipboard data cannot be accessed if the document is not focused.
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
